@@ -1,6 +1,11 @@
 import 'dart:math';
 
 import 'package:data_app/domain/product/product.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final productHttpRepository = Provider<ProductHttpRepository>((ref) {
+  return ProductHttpRepository();
+});
 
 class ProductHttpRepository {
   // fake data
@@ -46,6 +51,10 @@ class ProductHttpRepository {
   int deleteById(int id) {
     // http 통신 코드
     list.where((product) => product.id != id).toList();
-    return 1;
+    if (id == 4) {
+      return -1;
+    } else {
+      return 1;
+    }
   }
 }
